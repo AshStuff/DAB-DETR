@@ -372,7 +372,6 @@ class DeformableTransformerDecoder(nn.Module):
             else:
                 self.ref_point_head = MLP(2 * d_model, d_model, d_model, 2)
         self.high_dim_query_update = high_dim_query_update
-        import pdb;pdb.set_trace()
         if high_dim_query_update:
             self.high_dim_query_proj = MLP(d_model, d_model, d_model, 2)
 
@@ -384,6 +383,7 @@ class DeformableTransformerDecoder(nn.Module):
         if self.use_dab:
             assert query_pos is None
         bs = src.shape[0]
+        import pdb;pdb.set_trace()
         reference_points = reference_points[None].repeat(bs, 1, 1) # bs, nq, 4(xywh)
 
 
