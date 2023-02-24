@@ -59,7 +59,7 @@ class DeformableTransformer(nn.Module):
             self.pos_trans_norm = nn.LayerNorm(d_model * 2)
         else:
             if not self.use_dab:
-                self.reference_points = nn.Linear(d_model, 2)
+                self.nnreference_points = nn.Linear(d_model, 2)
 
         self.high_dim_query_update = high_dim_query_update
         if high_dim_query_update:
@@ -372,6 +372,7 @@ class DeformableTransformerDecoder(nn.Module):
             else:
                 self.ref_point_head = MLP(2 * d_model, d_model, d_model, 2)
         self.high_dim_query_update = high_dim_query_update
+        import pdb;pdb.set_trace()
         if high_dim_query_update:
             self.high_dim_query_proj = MLP(d_model, d_model, d_model, 2)
 
